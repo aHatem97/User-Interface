@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<div th:replace="fragments/common/forms-header-links :: forms_header_links"></div>
+
+  <!-- iCheck for checkboxes and radio inputs -->
+  <link rel="stylesheet" th:href="@{/plugins/icheck-bootstrap/icheck-bootstrap.min.css}">
+</head>
+<body class="hold-transition sidebar-mini">
+<div class="wrapper">
+  <!-- Navbar -->
+<div th:replace="fragments/common/top-nav :: top_nav"></div>
+  <!-- /.navbar -->
+
+  <!-- Main Sidebar Container -->
+<div th:replace="fragments/common/side-bar-menu :: side_bar_menu"></div>
+  <!-- /.sidebar -->
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 th:if="${Edit == true}">Edit Product</h1>
+			<h1 th:unless="${Edit == true}">Add Product</h1>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <!-- left column -->
+          <div class="col-md-12">
+            <!-- jquery validation -->
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Form</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              <form id="quickForm" method="post" th:action="@{/ui/products/save}" th:object="${product}">
+                <div class="card-body">
+                
+						<div class="form-group" th:if="${Edit == true}">
+							<label for="productId">Product ID</label>
+							<input readonly type="text" class="form-control" id="productId" name="productId" th:field="*{productId}" value="">
+						</div>
+						
+						<div class="form-group">
+							<label for="productName">Product Name</label>
+							<input autofocus type="text" class="form-control" id="productName" name="productName" th:field="*{productName}" value="" placeholder="Enter Product Name">
+							<div class="alert alert-warning"  th:if="${#fields.hasErrors('productName')}" th:errors="*{productName}"></div>
+						</div>
+						
+						<div class="form-group">
+							<label for="price">Price</label>
+							<input type="text" class="form-control" id="price" name="price" th:field="*{price}" value="" placeholder="Enter Price">
+							<div class="alert alert-warning" th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></div>
+						</div>
+			            <!-- iCheck -->
+			                <div class="row">
+			                  <div class="col-sm-6">
+			                  
+			                    <div class="form-group clearfix">
+			                      <div class="icheck-success d-inline">
+			                        <input type="checkbox" checked id="isReservable" name="isReservable" th:field="*{isReservable}">
+			                        <label for="isReservable">Reservable</label>
+			                      </div>
+			                    </div>
+			                    
+			                    <div class="form-group clearfix">  
+			                      <div class="icheck-success d-inline">
+			                        <input type="checkbox" id="isPayable" name="isPayable" th:field="*{isPayable}">
+			                        <label for="isPayable">Payable</label>
+			                      </div>
+			                    </div>  
+			                    
+			                  </div>
+			                </div>
+			            <!-- /. icheck -->
+						<div class="form-group">
+							<label for="posTerminalId">Pos Terminal ID</label>
+							<input type="text" class="form-control" id="posTerminalId" name="posTerminalId" th:field="*{posTerminalId}" value="" placeholder="Enter POS ID">
+							<div class="alert alert-warning" th:if="${#fields.hasErrors('posTerminalId')}" th:errors="*{posTerminalId}"></div>
+						</div>
+						
+                </div>
+                <!-- /.card-body -->
+                <div class="card-footer">
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+              </form>
+            </div>
+            <!-- /.card -->
+            </div>
+          <!--/.col (left) -->
+          <!-- right column -->
+          <div class="col-md-6">
+
+          </div>
+          <!--/.col (right) -->
+        </div>
+        <!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+  </div>
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+<!-- ./wrapper -->
+
+<div th:replace="fragments/common/forms-footer-links :: forms_footer_links"></div>
+
+</body>
+</html>

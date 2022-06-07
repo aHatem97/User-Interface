@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<title>Products Table</title>
+<div th:replace="fragments/common/tables-header-links :: tables_header_links"></div>
+</head>
+<body class="hold-transition sidebar-mini">
+<div class="wrapper">
+
+  <!-- Navbar -->
+<div th:replace="fragments/common/top-nav :: top_nav"></div>
+  <!-- /.navbar -->
+
+  <!-- Main Sidebar Container -->
+<div th:replace="fragments/common/side-bar-menu :: side_bar_menu"></div>
+  <!-- /.sidebar -->
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Products Table</h1>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <div class="card" th:switch="${products}">
+            <div th:case="*">
+              <div class="card-header">
+                <h3 class="card-title">Products</h3>
+                <h3 class="card-title">Orders <a class="btn" id="ibtn" th:href="@{/ui/products/add-product}"><i class="fa-regular fa-square-plus fa-lg"></i></a></h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="example1" class="table table-bordered table-striped table-hover">
+                  <thead>
+						<tr>
+							<th>ID</th>
+							<th>Product Name</th>
+							<th>Price</th>
+							<th>Reservable</th>
+							<th>Payable</th>
+							<th>POS Terminal ID</th>
+							<th>User ID</th>
+							<th></th>
+						</tr>
+                  </thead>
+                  <tbody>
+						<tr th:each="product : ${products}">
+							<td th:text="${product.productId}"></td>
+							<td th:text="${product.productName}"></td>
+							<td th:text="${product.price}"></td>
+							<td th:text="${product.isReservable}"></td>
+							<td th:text="${product.isPayable}"></td>
+							<td th:text="${product.posTerminalId}"></td>
+							<td th:text="${product.user.userId}"></td>
+							<td>
+					            <a class="btn delBtn" id="delBtn" th:href="@{/ui/products/delete/(id=${product.productId})}"><i class="fa-solid fa-trash"></i></a>
+                				<a class="btn" id="ibtn" th:href="@{/ui/products/add-product/__(${product.productId})__}"><i class="fa-solid fa-pen-to-square"></i></a>
+                    		</td>
+						</tr>
+                  </tbody>
+                  <tfoot>
+                  		<tr>
+							<th>ID</th>
+							<th>Product Name</th>
+							<th>Price</th>
+							<th>Reservable</th>
+							<th>Payable</th>
+							<th>POS Terminal ID</th>
+							<th>User ID</th>
+							<th></th>
+                 		</tr>
+                  </tfoot>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+            </div>
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div>
+      
+<div th:replace="fragments/fragments :: delete_button_modal"></div>
+
+      <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+  <footer class="main-footer">
+    <div class="float-right d-none d-sm-block">
+      <b>Version</b> 3.2.0
+    </div>
+    <strong>Copyright &copy; 2022-2025 <a th:href="@{/welcome}">Alpha Design</a>.</strong> All rights reserved.
+  </footer>
+
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
+
+<div th:replace="fragments/common/tables-footer-links :: tables_footer_links"></div>
+
+</body>
+</html>

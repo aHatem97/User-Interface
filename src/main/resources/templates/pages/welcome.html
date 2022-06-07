@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+  <!-- links -->
+<div th:replace="fragments/fragments :: welcome_links"></div>
+  <!-- /. links -->
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+<div class="wrapper">
+
+  <!-- Preloader -->
+  <div class="preloader flex-column justify-content-center align-items-center">
+    <img class="animation__shake" th:src="@{/images/AdminLTELogo.png}" alt="AdminLTELogo" height="60" width="60">
+  </div>
+  <!-- /.Preloader -->
+  
+  <!-- Navbar -->
+<div th:replace="fragments/common/top-nav :: top_nav"></div>
+  <!-- /.navbar -->
+
+  <!-- Main Sidebar Container -->
+<div th:replace="fragments/common/side-bar-menu :: side_bar_menu"></div>
+  <!-- /.Main Sidebar Container -->
+  
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <!-- Small boxes (Stat box) -->
+        <div class="row">
+          <div class="col-lg-3 col-6">
+            <!-- small box 1 -->
+<div th:replace="fragments/common/small-box-1 :: small_box_1"></div>
+            <!-- /. small box 1 -->
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small box 2 -->
+<div th:replace="fragments/common/small-box-2 :: small_box_2"></div>
+            <!-- /. small box 2 -->
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small box 3-->
+<div th:replace="fragments/common/small-box-3 :: small_box_3"></div>
+            <!-- /. small box 3 -->
+          </div>
+          <!-- ./col -->
+          <div class="col-lg-3 col-6">
+            <!-- small box 4 -->
+<div th:replace="fragments/common/small-box-4 :: small_box_4"></div>
+            <!-- /. small box 4 -->
+          </div>
+          <!-- ./col -->
+        </div>
+        <!-- /.row -->
+        <!-- Main row -->
+        <div class="row">
+          <!-- Left col -->
+          <section class="col-lg-7 connectedSortable">
+            <!-- Custom tabs (Charts with tabs)-->
+<div th:replace="fragments/common/sales-chart-tabs :: sales_chart_tabs"></div>
+            <!-- /.card -->
+
+            <!-- DIRECT CHAT -->
+<div th:replace="fragments/common/direct-chat :: direct_chat"></div>     
+            <!--/.direct-chat -->
+
+            <!-- TO DO List -->
+<div th:replace="fragments/common/to-do-list :: to_do_list"></div>     
+            <!-- /. TO DO List -->
+            
+          </section>
+          <!-- /.Left col -->
+          <!-- right col (We are only adding the ID to make the widgets sortable)-->
+          <section class="col-lg-5 connectedSortable">
+
+            <!-- Map card -->
+<div th:replace="fragments/common/map-card :: map_card"></div>     
+            <!-- /. Map card -->
+
+            <!-- solid sales graph -->
+<div th:replace="fragments/common/sales-solid-graph :: sales_solid_graph"></div>     
+            <!-- /. solid sales graph -->
+
+            <!-- Calendar -->
+<div th:replace="fragments/common/calendar-card :: calendar_card"></div>     
+            <!-- /. Calendar card -->
+            
+          </section>
+          <!-- right col -->
+        </div>
+        <!-- /.row (main row) -->
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+  
+<div th:replace="fragments/common/footer:: footer"></div>
+   
+  <!-- Control Sidebar -->
+  <aside class="control-sidebar control-sidebar-dark">
+    <!-- Control sidebar content goes here -->
+  </aside>
+  <!-- /.control-sidebar -->
+</div>
+<!-- ./wrapper -->
+
+<!-- Footer Links -->
+<div th:replace="fragments/common/welcome-footer-links:: welcome_footer_links"></div>     
+<!-- /. Footer Links -->
+</body>
+</html>

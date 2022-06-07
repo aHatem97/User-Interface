@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<body>
+<div th:fragment=forms_footer_links>
+<!-- jQuery -->
+<script type="text/javascript" th:src="@{/plugins/jquery/jquery.min.js}"></script>
+<script type="text/javascript">
+function madeAjaxCall(){
+	$.ajax({
+		type: "post",
+		url: "${pageContext.request.contentPath}/ui/orders/save",
+		cache: false,
+		data:"notes="+$("#notes").val()
+		     +"&amount="+$("#amount").val()
+		     +"&trxid="+$("#trxid").val()
+		     +"&selectedProducts="+$("#selectedProducts").val()
+		     +"&phoneNumber="+$("#phoneNumber").val(),
+		     
+		success: function(response){
+			$('#result').html("");
+			$('#result').html("Notes: "+response.notes+
+							  "<br/> Amount: "+response.amount+
+							  "<br/> TrxID: "+response.trxid+
+							  "<br/> Selected Products: "+response.selectedProducts+
+							  "<br/> Phone Number: "+response.phoneNumber);
+		},
+		
+		error: function(XMLHttpRequest, textStatus, errorThrown){
+			alert('Error while processing ...'+XMLHttpRequest.toString());
+		}
+	});
+}
+</script>
+<!-- Bootstrap 4 -->
+<script th:src="@{/plugins/bootstrap/js/bootstrap.bundle.min.js}"></script>
+<!-- jquery-validation -->
+<script th:src="@{/plugins/jquery-validation/jquery.validate.min.js}"></script>
+<script th:src="@{/plugins/jquery-validation/additional-methods.min.js}"></script>
+<!-- AdminLTE App -->
+<script th:src="@{/js/adminlte.min.js}"></script>
+</div>
+</body>
+</html>
